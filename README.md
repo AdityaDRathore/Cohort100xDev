@@ -1,2 +1,2 @@
 # Cohort100xDev
-Contain my progress for HKirat Cohor Learnings. 
+All Cohort Files and Codes comprising 
