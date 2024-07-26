@@ -1,13 +1,13 @@
-import express from 'express'; 
 const express = require('express'); 
-const port = 5000;
-const app = express();
+const port = 3000; 
+const bodyparser = require('body-parser'); 
+const app = express(); 
+
+app.use(bodyparser.json()); 
 
 app.get('/', function(req, res) {
-    res.json({
-        name: "Aditya",
-        age: 20
-    })
+    console.log(req.body); 
+    res.send('Hello World'); 
 })
 
-app.listen(port);
+app.listen(port); 
