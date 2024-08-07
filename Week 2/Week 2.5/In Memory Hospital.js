@@ -9,7 +9,9 @@ var users = [{
     }]
 }]; 
 
+
 const app = express(); 
+app.use(express.json()); 
 
 app.get('/', function(req, res) {
     const JohnKidneys = users[0].kidney; 
@@ -37,12 +39,14 @@ app.post('/', function(req, res) {
         healthy: isHealthy  
     })
     res.json({
-        messahe: "Done!"
+        message: "Done!"
     })
 })
 
 app.put('/', function(req, res) {
-
+    for(let i = 0; i < users[0].kidney.length; i++) {
+        users[0].kidney[i].healthy = true; 
+    }
 })
 
 app.delete('/', function(req, res) {
