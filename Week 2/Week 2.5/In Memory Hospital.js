@@ -47,6 +47,7 @@ app.put('/', function(req, res) {
     for(let i = 0; i < users[0].kidney.length; i++) {
         users[0].kidney[i].healthy = true; 
     }
+    res.json({}); 
 })
 
 app.delete('/', function(req, res) {
