@@ -16,7 +16,6 @@ app.use(express.json());
 app.get('/', function(req, res) {
     const JohnKidneys = users[0].kidney; 
     const numberOfKidneys = JohnKidneys.length; 
-    console.log(JohnKidneys);
     let numberOfHealthyKidneys = 0; 
     for(let i = 0; i < JohnKidneys.length; i++) {
         if(JohnKidneys[i].healthy) {
@@ -24,13 +23,14 @@ app.get('/', function(req, res) {
         }
     }
     console.log(numberOfHealthyKidneys);
+    console.log(JohnKidneys); 
     const numberOfUnhealthyKidneys = numberOfKidneys - numberOfHealthyKidneys; 
     res.json ({
         JohnKidneys,
         numberOfKidneys,
         numberOfHealthyKidneys,
         numberOfUnhealthyKidneys
-    } )
+    })
 })
 
 app.post('/', function(req, res) {
@@ -51,7 +51,18 @@ app.put('/', function(req, res) {
 })
 
 app.delete('/', function(req, res) {
-
+    const newKideys = []; 
+    for(let i = 0; i < users[0].kidney.length; i++) {
+        if(users[0].kidney[i].healthy) {
+            newKideys.push({
+                healthy: true
+            })
+        }
+    }
+    users[0].kidney = newKideys; 
+    res.json({
+        message: "Done!"
+    })
 })
 
 app.listen(3030); 
