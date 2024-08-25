@@ -2,6 +2,14 @@ const express = require('express');
 
 const app = express(); 
 
+let numberOfReq = 0; 
+function calculateReq(req, res, next) {
+    numberOfReq++; 
+    console.log(numberOfReq);
+    next(); 
+}
+app.use(calculateReq); 
+
 function usermiddleware(req, res, next) {
     const username = req.headers.username;
     const password = req.headers.username;
