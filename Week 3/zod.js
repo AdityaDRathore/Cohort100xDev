@@ -14,7 +14,7 @@ const schema = zod.object({
     email: zod.string().email(), 
     password: z.string().min(8), 
     country: z.literal("IN").or(z.literal('US')),
-    kidneys: z.array(z.number()) 
+    kidneys: z.array(z.number())  
 })
 
 
