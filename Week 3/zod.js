@@ -23,7 +23,6 @@ app.use(express.json());
 app.post('/health-checkup', function(req, res) {
     const kidneys = req.body.kidneys; 
     const response = schema.safeParse(kidneys); 
-    const kidneyslenth = kidneys.length;
     if(!response.success){
         res.status(411).json({
             message : "Invalid output"
